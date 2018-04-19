@@ -1,66 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:background="@mipmap/background_splash"
-    android:gravity="center"
-    android:orientation="vertical"
+
     android:layout_height="match_parent">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:hint="@string/t_n_ng_nh_p"
-        android:padding="@dimen/size12"
-        android:layout_marginStart="@dimen/size24"
-        android:textSize="@dimen/size_text_20"
-        android:ems="10"
-        android:id="@+id/edt_ten_dang_nhap"
-        android:layout_marginEnd="@dimen/size24"
-        android:textColorHint="@color/colorWhite"
-        android:background="@drawable/border_edt_white"
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:id="@+id/progreess_login"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
         android:layout_height="wrap_content" />
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
-        android:hint="@string/m_t_kh_u"
-        android:padding="@dimen/size12"
-        android:ems="10"
-        android:layout_marginTop="@dimen/size20"
-        android:layout_marginStart="@dimen/size24"
-        android:textSize="@dimen/size_text_20"
-        android:id="@+id/edt_mat_khau"
-        android:inputType="textPassword"
-        android:layout_marginEnd="@dimen/size24"
-        android:textColorHint="@color/colorWhite"
-        android:background="@drawable/border_edt_white"
-        android:layout_height="wrap_content" />
-    <Button
-        android:layout_width="match_parent"
-        android:text="@string/ng_nh_p"
-        android:textAllCaps="false"
-        android:textStyle="bold"
-        android:id="@+id/btn_dang_nhap"
-        android:layout_marginStart="@dimen/size24"
-        android:layout_marginEnd="@dimen/size24"
-        android:layout_marginTop="@dimen/size20"
-        android:textSize="@dimen/size_text_20"
-        android:background="@drawable/button_white"
-        android:textColor="@color/colorGreenOriginal"
-        android:layout_height="wrap_content" />
-    <TableRow android:layout_width="match_parent"
+        android:orientation="vertical"
         android:gravity="center"
-        android:layout_marginTop="@dimen/size20"
-        android:layout_height="wrap_content">
-        <TextView android:layout_width="wrap_content"
-            android:text="@string/b_n_ch_a_c_t_i_kho_n"
+        android:layout_height="match_parent">
+        <EditText
+            android:layout_width="match_parent"
+            android:hint="@string/t_n_ng_nh_p"
+            android:padding="@dimen/size12"
+            android:layout_marginStart="@dimen/size24"
+            android:textSize="@dimen/size_text_20"
+            android:ems="10"
+            android:lines="1"
             android:textColor="@color/colorWhite"
-            android:textStyle="italic|bold"
-            android:layout_height="wrap_content"/>
-        <TextView android:layout_width="wrap_content"
-            android:text="@string/ng_k"
-            android:textStyle="italic|bold"
-            android:layout_marginStart="@dimen/size4"
-            android:id="@+id/tv_dang_ky"
+            android:id="@+id/edt_ten_dang_nhap"
+            android:layout_marginEnd="@dimen/size24"
+            android:textColorHint="@color/colorWhite"
+            android:background="@drawable/border_edt_white"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_width="match_parent"
+            android:hint="@string/m_t_kh_u"
+            android:padding="@dimen/size12"
+            android:ems="10"
+            android:lines="1"
+            android:layout_marginTop="@dimen/size20"
+            android:layout_marginStart="@dimen/size24"
+            android:textSize="@dimen/size_text_20"
+            android:id="@+id/edt_mat_khau"
             android:textColor="@color/colorWhite"
-            android:layout_height="wrap_content"/>
-    </TableRow>
+            android:inputType="textPassword"
+            android:layout_marginEnd="@dimen/size24"
+            android:textColorHint="@color/colorWhite"
+            android:background="@drawable/border_edt_white"
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="match_parent"
+            android:text="@string/ng_nh_p"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:id="@+id/btn_dang_nhap"
+            android:layout_marginStart="@dimen/size24"
+            android:layout_marginEnd="@dimen/size24"
+            android:layout_marginTop="@dimen/size20"
+            android:textSize="@dimen/size_text_20"
+            android:background="@drawable/button_white"
+            android:textColor="@color/colorGreenOriginal"
+            android:layout_height="wrap_content" />
+        <TableRow android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/size20"
+            android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content"
+                android:text="@string/b_n_ch_a_c_t_i_kho_n"
+                android:textColor="@color/colorWhite"
+                android:textStyle="italic|bold"
+                android:layout_height="wrap_content"/>
+            <TextView android:layout_width="wrap_content"
+                android:text="@string/ng_k"
+                android:textStyle="italic|bold"
+                android:layout_marginStart="@dimen/size4"
+                android:id="@+id/tv_dang_ky"
+                android:textColor="@color/colorWhite"
+                android:layout_height="wrap_content"/>
+        </TableRow>
+    </LinearLayout>
 
-</LinearLayout>
+
+</RelativeLayout>

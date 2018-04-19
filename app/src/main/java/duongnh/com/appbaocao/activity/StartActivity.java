@@ -1,4 +1,4 @@
-package duongnh.com.appbaocao;
+package duongnh.com.appbaocao.activity;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 
+import duongnh.com.appbaocao.R;
 import duongnh.com.appbaocao.fragment.LoginFragment;
 import duongnh.com.appbaocao.fragment.RegisterFragment;
 import duongnh.com.appbaocao.fragment.SplashFragment;

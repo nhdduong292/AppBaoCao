@@ -2,6 +2,7 @@ package duongnh.com.appbaocao.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,10 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import duongnh.com.appbaocao.R;
-import duongnh.com.appbaocao.StartActivity;
+import duongnh.com.appbaocao.activity.MainActivity;
+import duongnh.com.appbaocao.activity.StartActivity;
+import duongnh.com.appbaocao.common.Utils;
+import duongnh.com.appbaocao.database.TaiKhoanDataBase;
 
 /**
  * Created by Admin on 4/19/2018.
@@ -24,6 +30,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     private EditText edtTenDN, edtMK;
     private StartActivity main;
     private Intent intent;
+    private TaiKhoanDataBase db;
+    private ProgressBar progressBar;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -32,9 +40,12 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         //initView
         edtTenDN = view.findViewById(R.id.edt_ten_dang_nhap);
         edtMK = view.findViewById(R.id.edt_mat_khau);
+        progressBar = view.findViewById(R.id.progreess_login);
         btnDangNhap = view.findViewById(R.id.btn_dang_nhap);
         tvDangKy = view.findViewById(R.id.tv_dang_ky);
         //binData
+        db = new TaiKhoanDataBase(main);
+
         //initEvent
         btnDangNhap.setOnClickListener(this);
         tvDangKy.setOnClickListener(this);
@@ -48,7 +59,33 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 main.showFragment(main.getLoginFragment(), main.getRegisterFragment());
                 break;
             case R.id.btn_dang_nhap:
+                setError();
+                if (db.login(edtTenDN.getText().toString(), edtMK.getText().toString())) {
+                    Utils.setSharePreValue(main, "start_login", "login_true");
+                    progressBar.setVisibility(View.VISIBLE);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            startActivity(new Intent(main, MainActivity.class));
+                        }
+                    }, 2000);
+                    progressBar.setVisibility(View.GONE);
+                } else {
+                    Toast.makeText(main, "Wrong username or password!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 break;
+        }
+    }
+    public void setError(){
+        if(edtTenDN.getText().toString().isEmpty()){
+            edtTenDN.setError("Wrong Info!");
+            return;
+        }
+        if (edtMK.getText().toString().isEmpty()){
+            edtMK.setError("Wrong Info!");
+            return;
         }
     }
 }

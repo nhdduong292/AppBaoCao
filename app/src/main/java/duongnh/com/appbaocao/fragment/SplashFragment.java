@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import duongnh.com.appbaocao.R;
-import duongnh.com.appbaocao.StartActivity;
+import duongnh.com.appbaocao.activity.StartActivity;
 
 /**
  * Created by Admin on 4/19/2018.

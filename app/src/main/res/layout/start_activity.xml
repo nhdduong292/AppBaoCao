@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="duongnh.com.appbaocao.StartActivity">
+    tools:context="duongnh.com.appbaocao.activity.StartActivity">
 
     <FrameLayout
         android:id="@+id/frame_start"
