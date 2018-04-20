@@ -72,7 +72,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                             main.showFragment(main.getRegisterFragment(), main.getLoginFragment());
                         }
                     }, 2000);
-                    progressBar.setVisibility(View.GONE);
+//                    progressBar.setVisibility(View.GONE);
                 }else {
                     Toast.makeText(main, "Account exist !!", Toast.LENGTH_SHORT).show();
                     return;

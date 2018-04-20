@@ -69,7 +69,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                             startActivity(new Intent(main, MainActivity.class));
                         }
                     }, 2000);
-                    progressBar.setVisibility(View.GONE);
+//                    progressBar.setVisibility(View.GONE);
                 } else {
                     Toast.makeText(main, "Wrong username or password!", Toast.LENGTH_SHORT).show();
                     return;
