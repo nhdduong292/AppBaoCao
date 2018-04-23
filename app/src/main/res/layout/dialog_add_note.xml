@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/colorTransparent"
+    android:padding="@dimen/size8"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/background_dialog"
+        android:layout_weight="5">
+        <ImageView
+            android:layout_width="@dimen/size40"
+            android:src="@mipmap/ic_close"
+            android:adjustViewBounds="true"
+            android:id="@+id/iv_close_dialog"
+            android:layout_alignParentEnd="true"
+            android:layout_height="@dimen/size40" />
+        <TextView
+            android:layout_width="match_parent"
+            android:text="Note"
+            android:gravity="center"
+            android:textSize="@dimen/size_text_28"
+            android:id="@+id/tv_note"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlack"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_below="@id/tv_note"
+            android:hint="Name"
+            android:layout_marginStart="@dimen/size8"
+            android:textColor="@color/colorGrey"
+            android:textColorHint="@color/colorGrey"
+            android:id="@+id/edt_name"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_below="@id/edt_name"
+            android:layout_marginStart="@dimen/size8"
+            android:textColor="@color/colorGrey"
+            android:textColorHint="@color/colorGrey"
+            android:id="@+id/edt_content"
+            android:hint="Content"
+            android:layout_height="@dimen/size90" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginStart="@dimen/size8"
+            android:id="@+id/ll_calendar"
+            android:layout_below="@id/edt_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="@dimen/size40"
+                android:src="@mipmap/ic_calendar"
+                android:layout_height="@dimen/size40" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="@color/colorGrey"
+                android:textColorHint="@color/colorGrey"
+                android:text="time"
+                android:id="@+id/tv_calendar"
+                android:gravity="center"
+                android:layout_marginStart="@dimen/size12"
+                android:textSize="@dimen/size_text_16"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:text="Hoàn thành"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:id="@+id/tv_add"
+            android:textStyle="bold"
+            android:textSize="@dimen/size20"
+            android:padding="@dimen/size4"
+            android:textColor="@color/colorOrange"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3">
+
+    </LinearLayout>
+
+</LinearLayout>

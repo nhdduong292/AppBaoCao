@@ -7,7 +7,7 @@
     //
     <color name="colorPinkRed">#F03874</color>
     <color name="colorGreenOriginal">#0ABF5D</color>
-    <color name="colorGreenTran">#AA0ABF5D</color>
+    <color name="colorGreenTran">#000ABF5D</color>
     <color name="colorGreen_40">#640ABF5D</color>
     <color name="colorOrange">#FE722C</color>
     <color name="colorBlue">#34CBF5</color>
