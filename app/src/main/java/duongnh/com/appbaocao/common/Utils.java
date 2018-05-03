@@ -20,4 +20,17 @@ public class Utils {
                 Context.MODE_PRIVATE);
         return sharedPreferences.getString(key,null);
     }
+
+    public static void setUser(Context mContext, String key, String value){
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences("Duongtaikhoan",
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(key,value);
+        editor.commit();
+    }
+    public static String getUser(Context mContext, String key){
+        SharedPreferences sharedPreferences = mContext.getSharedPreferences("Duongtaikhoan",
+                Context.MODE_PRIVATE);
+        return sharedPreferences.getString(key,null);
+    }
 }

@@ -1,4 +1,4 @@
-package duongnh.com.appbaocao.fragment;
+package duongnh.com.appbaocao.fragment.main;
 
 import android.content.Context;
 import android.content.Intent;

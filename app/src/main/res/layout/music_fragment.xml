@@ -31,16 +31,25 @@
         android:layout_weight="9">
         <TextView
             android:layout_width="match_parent"
-            android:text="Music từ máy"
+            android:text="1 - Music từ máy"
             android:textSize="@dimen/size_text_20"
+            android:padding="@dimen/size8"
             android:id="@+id/tv_music_tu_may"
             android:layout_height="wrap_content" />
         <TextView
             android:layout_width="match_parent"
-            android:text="Music Online"
+            android:text="2 - Music Online"
             android:textSize="@dimen/size_text_20"
+            android:padding="@dimen/size8"
             android:id="@+id/tv_music_online"
             android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3 - Khác"
+            android:padding="@dimen/size8"
+
+            android:textSize="@dimen/size_text_20" />
 
     </LinearLayout>
 

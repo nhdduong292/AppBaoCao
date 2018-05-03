@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorGreenOriginal"
+        android:layout_weight="1">
+        <ImageView
+            android:id="@+id/iv_back_white"
+            android:layout_width="@dimen/size50"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:padding="@dimen/size12"
+            android:src="@mipmap/ic_back_white" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:text=""
+            android:textSize="@dimen/size24"
+            android:textColor="@color/colorWhite"
+            android:gravity="center"
+            android:id="@+id/tv_name"
+            android:layout_centerInParent="true"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="9">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@mipmap/no_image"
+            android:gravity="center|bottom"
+            android:layout_marginBottom="@dimen/size50"
+            android:layout_height="@dimen/size135">
+            <ImageView
+                android:layout_width="@dimen/size70"
+                android:id="@+id/iv_avatar"
+                android:background="@drawable/circle_avatar"
+                android:layout_height="@dimen/size70" />
+        </LinearLayout>
+        <EditText
+            android:id="@+id/edt_ten_dang_nhap"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/size10"
+            android:background="@drawable/border_grey"
+            android:ems="10"
+            android:hint="@string/user_name"
+            android:inputType="textPersonName"
+            android:paddingStart="@dimen/size15"
+            android:layout_margin="@dimen/size8"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorTextGrey"
+            android:textSize="@dimen/size_text_15" />
+        <EditText
+            android:id="@+id/edt_mat_khau"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/size10"
+            android:background="@drawable/border_grey"
+            android:ems="10"
+            android:hint="@string/password"
+            android:inputType="textPersonName"
+            android:paddingStart="@dimen/size15"
+            android:layout_margin="@dimen/size8"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorTextGrey"
+            android:textSize="@dimen/size_text_15" />
+        <EditText
+            android:id="@+id/edt_ten"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/size10"
+            android:background="@drawable/border_grey"
+            android:ems="10"
+            android:hint="@string/h_v_t_n"
+            android:inputType="textPersonName"
+            android:paddingStart="@dimen/size15"
+            android:layout_margin="@dimen/size8"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorTextGrey"
+            android:textSize="@dimen/size_text_15" />
+        <EditText
+            android:id="@+id/edt_tuoi"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/size10"
+            android:background="@drawable/border_grey"
+            android:ems="10"
+            android:hint="@string/tu_i"
+            android:inputType="number"
+            android:paddingStart="@dimen/size15"
+            android:layout_margin="@dimen/size8"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorTextGrey"
+            android:textSize="@dimen/size_text_15" />
+        <Button
+            android:layout_width="match_parent"
+            android:text="@string/update"
+            android:layout_margin="@dimen/size8"
+            android:background="@drawable/button_orange"
+            android:textAllCaps="false"
+            android:textSize="@dimen/size_text_22"
+            android:id="@+id/btn_update"
+            android:textColor="@color/colorWhite"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</LinearLayout>

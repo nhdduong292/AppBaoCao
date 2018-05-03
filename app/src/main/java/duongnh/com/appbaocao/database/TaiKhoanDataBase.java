@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.sql.ResultSet;
+
 import duongnh.com.appbaocao.model.TaiKhoan;
 
 /**
@@ -18,10 +20,17 @@ public class TaiKhoanDataBase extends SQLiteOpenHelper {
     public static final String ID = "id";
     public static final String TEN_DANG_NHAP = "tendangnhap";
     public static final String MATKHAU = "matkhau";
+    public static final String TEN = "ten";
+    public static final String TUOI = "tuoi";
+    public static final String AVATAR = "avatar";
+    private SQLiteDatabase db;
     private String query = "CREATE TABLE " + TABLE_NAME + " (" +
             ID + " integer primary key, " +
             TEN_DANG_NHAP + " TEXT, " +
-            MATKHAU + " TEXT)";
+            MATKHAU + " TEXT, " +
+            TEN + " TEXT, " +
+            TUOI + " TEXT, " +
+            AVATAR + " TEXT)";
     public TaiKhoanDataBase(Context context) {
         super(context, DATABASE_NAME, null, 1);
     }
@@ -36,16 +45,16 @@ public class TaiKhoanDataBase extends SQLiteOpenHelper {
 
     }
     public void addTaiKhoan(TaiKhoan t){
-        SQLiteDatabase sql = getWritableDatabase();
+        db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(TEN_DANG_NHAP, t.getTenDN());
         contentValues.put(MATKHAU, t.getMatKhau());
-        sql.insert(TABLE_NAME, null,contentValues);
-        sql.close();
+        db.insert(TABLE_NAME, null,contentValues);
+        db.close();
     }
     public boolean login(String username, String password) {
         String query = "select * from " + TABLE_NAME + " where tendangnhap like ? and matkhau like ?";
-        SQLiteDatabase db = getWritableDatabase();
+        db = getWritableDatabase();
         Cursor cursor = db.rawQuery(query, new String[]{username, password});
         if (cursor.moveToFirst()) {
             return true;
@@ -54,11 +63,22 @@ public class TaiKhoanDataBase extends SQLiteOpenHelper {
     }
     public boolean check_user(String username) {
         String query = "select * from " + TABLE_NAME + " where tendangnhap like ?";
-        SQLiteDatabase db = getWritableDatabase();
+        db = getWritableDatabase();
         Cursor cursor = db.rawQuery(query, new String[]{username});
         if (cursor.moveToFirst()) {
             return false;
         }
         return true;
+    }
+    public TaiKhoan findTK(String s){
+        TaiKhoan t = null;
+        String query = "select * from "+TABLE_NAME+" where tendangnhap like ?";
+        db = getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, new String []{s});
+        if (cursor.moveToFirst()){
+            t = new TaiKhoan(cursor.getString(1),cursor.getString(2),
+                    cursor.getString(3), cursor.getString(4), cursor.getString(5));
+        }
+        return t;
     }
 }

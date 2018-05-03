@@ -1,4 +1,4 @@
-package duongnh.com.appbaocao.fragment;
+package duongnh.com.appbaocao.fragment.main;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

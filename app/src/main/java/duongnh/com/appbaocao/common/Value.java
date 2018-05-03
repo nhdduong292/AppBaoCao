@@ -16,4 +16,9 @@ public class Value {
 
     public static final String LOGIN_TRUE ="logintrue";
     public static final String STATUS_LOGIN="statuslogin";
+
+    public static final String USER="user";
+
+    public static final int CAMERA=112;
+    public static final int GALLERY=113;
 }

@@ -8,16 +8,16 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 
 import duongnh.com.appbaocao.R;
 import duongnh.com.appbaocao.common.Value;
-import duongnh.com.appbaocao.fragment.CallSmsFragment;
-import duongnh.com.appbaocao.fragment.DanhMucFragment;
-import duongnh.com.appbaocao.fragment.GameFragment;
-import duongnh.com.appbaocao.fragment.MenuFragment;
-import duongnh.com.appbaocao.fragment.MusicFragment;
-import duongnh.com.appbaocao.fragment.NoteFragment;
+import duongnh.com.appbaocao.fragment.main.CallSmsFragment;
+import duongnh.com.appbaocao.fragment.main.DanhMucFragment;
+import duongnh.com.appbaocao.fragment.main.GameFragment;
+import duongnh.com.appbaocao.fragment.main.MenuFragment;
+import duongnh.com.appbaocao.fragment.main.MusicFragment;
+import duongnh.com.appbaocao.fragment.main.NoteFragment;
+import duongnh.com.appbaocao.fragment.main.ProFileFragment;
 
 /**
  * Created by Admin on 4/19/2018.
@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private MusicFragment musicFragment = new MusicFragment();
     private MenuFragment menuFragment = new MenuFragment();
     private CallSmsFragment callSmsFragment = new CallSmsFragment();
+    private ProFileFragment proFileFragment = new ProFileFragment();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +70,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         transaction.add(R.id.frame_main, noteFragment);
         transaction.add(R.id.frame_main, menuFragment);
         transaction.add(R.id.frame_main, callSmsFragment);
+        transaction.add(R.id.frame_main, proFileFragment);
+        transaction.hide(proFileFragment);
         transaction.hide(callSmsFragment);
         transaction.hide(gameFragment);
         transaction.hide(menuFragment);
@@ -111,6 +114,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public CallSmsFragment getCallSmsFragment() {
         return callSmsFragment;
+    }
+
+    public ProFileFragment getProFileFragment() {
+        return proFileFragment;
     }
 
     @Override

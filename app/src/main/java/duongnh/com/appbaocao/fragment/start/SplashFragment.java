@@ -1,4 +1,4 @@
-package duongnh.com.appbaocao.fragment;
+package duongnh.com.appbaocao.fragment.start;
 
 import android.content.Intent;
 import android.os.AsyncTask;

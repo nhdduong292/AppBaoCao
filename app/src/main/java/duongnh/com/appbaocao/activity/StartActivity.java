@@ -18,9 +18,9 @@ import java.util.List;
 
 import duongnh.com.appbaocao.R;
 import duongnh.com.appbaocao.common.Value;
-import duongnh.com.appbaocao.fragment.LoginFragment;
-import duongnh.com.appbaocao.fragment.RegisterFragment;
-import duongnh.com.appbaocao.fragment.SplashFragment;
+import duongnh.com.appbaocao.fragment.start.LoginFragment;
+import duongnh.com.appbaocao.fragment.start.RegisterFragment;
+import duongnh.com.appbaocao.fragment.start.SplashFragment;
 
 public class StartActivity extends AppCompatActivity {
     private FrameLayout frameLayout;

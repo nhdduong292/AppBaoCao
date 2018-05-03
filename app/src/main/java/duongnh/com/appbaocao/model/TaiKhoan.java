@@ -7,6 +7,7 @@ package duongnh.com.appbaocao.model;
 public class TaiKhoan {
     private int id;
     private String tenDN, matKhau;
+    private String ten, tuoi, avatar;
 
     public TaiKhoan() {
     }
@@ -20,6 +21,38 @@ public class TaiKhoan {
     public TaiKhoan(String tenDN, String matKhau) {
         this.tenDN = tenDN;
         this.matKhau = matKhau;
+    }
+
+    public TaiKhoan(String tenDN, String matKhau, String ten, String tuoi, String avatar) {
+        this.tenDN = tenDN;
+        this.matKhau = matKhau;
+        this.ten = ten;
+        this.tuoi = tuoi;
+        this.avatar = avatar;
+    }
+
+    public String getTen() {
+        return ten;
+    }
+
+    public void setTen(String ten) {
+        this.ten = ten;
+    }
+
+    public String getTuoi() {
+        return tuoi;
+    }
+
+    public void setTuoi(String tuoi) {
+        this.tuoi = tuoi;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public int getId() {

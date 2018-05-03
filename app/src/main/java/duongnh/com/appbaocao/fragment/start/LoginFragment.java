@@ -1,4 +1,4 @@
-package duongnh.com.appbaocao.fragment;
+package duongnh.com.appbaocao.fragment.start;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -63,6 +63,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 setError();
                 if (db.login(edtTenDN.getText().toString(), edtMK.getText().toString())) {
                     Utils.setSharePreValue(main, Value.STATUS_LOGIN, Value.LOGIN_TRUE);
+                    Utils.setUser(main,Value.USER, edtTenDN.getText().toString());
                     progressBar.setVisibility(View.VISIBLE);
                     new Handler().postDelayed(new Runnable() {
                         @Override

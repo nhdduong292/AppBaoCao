@@ -10,4 +10,10 @@
     <string name="ng_nh_p_2">Đăng nhập</string>
     <string name="nh_p_l_i_m_t_kh_u">Nhập lại mật khẩu</string>
     <string name="category">Category</string>
+    <string name="update">Update</string>
+    <string name="tu_i">Tuổi</string>
+    <string name="h_v_t_n">Họ và tên</string>
+    <string name="password">Password</string>
+    <string name="user_name">User name</string>
+    <string name="profile">Profile</string>
 </resources>
