@@ -9,6 +9,8 @@
             android:layout_width="0dp"
             android:layout_weight="1.5"
             android:gravity="center"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/size_text_22"
             android:id="@+id/tv_number"
             android:text="1"
             android:layout_height="match_parent" />
@@ -50,7 +52,7 @@
             android:layout_weight="1"
             android:id="@+id/iv_delete"
             android:visibility="visible"
-            android:padding="@dimen/size8"
+            android:padding="@dimen/size12"
             android:src="@mipmap/ic_dustbin_pink"
             android:layout_height="wrap_content" />
     </LinearLayout>

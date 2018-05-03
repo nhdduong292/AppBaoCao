@@ -18,6 +18,7 @@ import duongnh.com.appbaocao.R;
 import duongnh.com.appbaocao.activity.MainActivity;
 import duongnh.com.appbaocao.activity.StartActivity;
 import duongnh.com.appbaocao.common.Utils;
+import duongnh.com.appbaocao.common.Value;
 import duongnh.com.appbaocao.database.TaiKhoanDataBase;
 
 /**
@@ -61,7 +62,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             case R.id.btn_dang_nhap:
                 setError();
                 if (db.login(edtTenDN.getText().toString(), edtMK.getText().toString())) {
-                    Utils.setSharePreValue(main, "start_login", "login_true");
+                    Utils.setSharePreValue(main, Value.STATUS_LOGIN, Value.LOGIN_TRUE);
                     progressBar.setVisibility(View.VISIBLE);
                     new Handler().postDelayed(new Runnable() {
                         @Override

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorGreenOriginal">
+
+        <ImageView
+            android:id="@+id/iv_back_white"
+            android:layout_width="@dimen/size50"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:padding="@dimen/size12"
+            android:src="@mipmap/ic_back_white" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="Danh bạ"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/size24" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/list_call"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"></ListView>
+</LinearLayout>

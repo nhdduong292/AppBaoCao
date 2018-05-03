@@ -39,10 +39,10 @@ ivMore = view.findViewById(R.id.iv_more);
 
         //binData
         arrDM = new ArrayList<>();
-        arrDM.add(new DanhMuc("Game",R.mipmap.ic_launcher,R.color.colorWhite));
-        arrDM.add(new DanhMuc("Music",R.mipmap.ic_launcher,R.color.colorOrange));
-        arrDM.add(new DanhMuc("Note",R.mipmap.ic_launcher,R.color.colorGrey));
-        arrDM.add(new DanhMuc("Call/Sms",R.mipmap.ic_launcher,R.color.colorAccent));
+        arrDM.add(new DanhMuc("Game",R.mipmap.ic_games_white_48dp,R.color.colorBrown));
+        arrDM.add(new DanhMuc("Music",R.mipmap.ic_queue_music_white_48dp,R.color.colorOrange));
+        arrDM.add(new DanhMuc("Note",R.mipmap.ic_create_white_48dp,R.color.colorGrey));
+        arrDM.add(new DanhMuc("Call/Sms",R.mipmap.ic_call_white_48dp,R.color.colorAccent));
         adapter = new DanhMucAdapter(main, R.layout.item_danh_muc,arrDM);
         gridView.setAdapter(adapter);
 
@@ -57,6 +57,8 @@ ivMore = view.findViewById(R.id.iv_more);
                 }
                 else if(position == 2){
                     main.showFragment(main.getDanhMucFragment(), main.getNoteFragment());
+                }else if(position == 3){
+                    main.showFragment(main.getDanhMucFragment(), main.getCallSmsFragment());
                 }
             }
         });

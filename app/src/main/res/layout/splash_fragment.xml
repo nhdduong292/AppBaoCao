@@ -13,5 +13,11 @@
         android:id="@+id/tv_skip"
         android:textSize="@dimen/size_text_20"
         android:layout_height="wrap_content" />
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/progreess"
+        android:visibility="gone"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

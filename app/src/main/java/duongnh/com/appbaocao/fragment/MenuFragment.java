@@ -1,5 +1,6 @@
 package duongnh.com.appbaocao.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,8 @@ import android.widget.LinearLayout;
 
 import duongnh.com.appbaocao.R;
 import duongnh.com.appbaocao.activity.MainActivity;
+import duongnh.com.appbaocao.activity.StartActivity;
+import duongnh.com.appbaocao.common.Value;
 
 /**
  * Created by Admin on 4/20/2018.
@@ -65,9 +68,12 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
                 main.showFragment(main.getMenuFragment(), main.getMusicFragment());
                 break;
             case R.id.ll_call_sms:
-
+                main.showFragment(main.getMenuFragment(), main.getCallSmsFragment());
                 break;
             case R.id.ll_log_out:
+                Value.START_FRAGMENT = Value.LOGIN_FRAGMENT;
+                Intent intent = new Intent(main, StartActivity.class);
+                startActivity(intent);
                 break;
         }
     }

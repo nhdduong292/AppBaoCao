@@ -11,6 +11,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import duongnh.com.appbaocao.R;
+import duongnh.com.appbaocao.common.Value;
+import duongnh.com.appbaocao.fragment.CallSmsFragment;
 import duongnh.com.appbaocao.fragment.DanhMucFragment;
 import duongnh.com.appbaocao.fragment.GameFragment;
 import duongnh.com.appbaocao.fragment.MenuFragment;
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private NoteFragment noteFragment = new NoteFragment();
     private MusicFragment musicFragment = new MusicFragment();
     private MenuFragment menuFragment = new MenuFragment();
+    private CallSmsFragment callSmsFragment = new CallSmsFragment();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +44,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //initEvent
 
         initFragment();
+        checkFragment();
     }
+
+    private void checkFragment() {
+        if(Value.MAIN_FRAGMENT == Value.GAME_FRAGMENT){
+            showFragment(temp,gameFragment);
+        }else if(Value.MAIN_FRAGMENT == Value.NOTE_FRAGMENT){
+            showFragment(temp,noteFragment);
+        }else if(Value.MAIN_FRAGMENT == Value.MUSIC_FRAGMENT){
+            showFragment(temp,musicFragment);
+        }else if(Value.MAIN_FRAGMENT == Value.CALL_FRAGMENT){
+            showFragment(temp,callSmsFragment);
+        }
+    }
+
     private void initFragment() {
         temp = danhMucFragment;
         FragmentManager manager = getSupportFragmentManager();
@@ -51,6 +68,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         transaction.add(R.id.frame_main, musicFragment);
         transaction.add(R.id.frame_main, noteFragment);
         transaction.add(R.id.frame_main, menuFragment);
+        transaction.add(R.id.frame_main, callSmsFragment);
+        transaction.hide(callSmsFragment);
         transaction.hide(gameFragment);
         transaction.hide(menuFragment);
         transaction.hide(musicFragment);
@@ -88,6 +107,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public Fragment getTemp() {
         return temp;
+    }
+
+    public CallSmsFragment getCallSmsFragment() {
+        return callSmsFragment;
     }
 
     @Override

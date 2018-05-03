@@ -261,6 +261,11 @@
     <dimen name="size_text_37">37sp</dimen>
     <dimen name="size_text_38">38sp</dimen>
     <dimen name="size_text_39">39sp</dimen>
+    <dimen name="size_text_50">50sp</dimen>
+    <dimen name="size_text_60">60sp</dimen>
+    <dimen name="size_text_70">70sp</dimen>
+    <dimen name="size_text_80">80sp</dimen>
+
 
 
 </resources>

@@ -10,6 +10,11 @@
         android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="@dimen/size200">
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:id="@+id/ll_trang_chu"
             android:padding="@dimen/size8"
             android:layout_height="wrap_content">
