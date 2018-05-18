@@ -40,6 +40,8 @@
             <ImageView
                 android:layout_width="@dimen/size70"
                 android:id="@+id/iv_avatar"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
                 android:background="@drawable/circle_avatar"
                 android:layout_height="@dimen/size70" />
         </LinearLayout>
@@ -65,7 +67,7 @@
             android:background="@drawable/border_grey"
             android:ems="10"
             android:hint="@string/password"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:paddingStart="@dimen/size15"
             android:layout_margin="@dimen/size8"
             android:textColor="@color/colorBlack"

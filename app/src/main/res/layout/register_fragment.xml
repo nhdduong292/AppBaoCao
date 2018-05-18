@@ -9,6 +9,14 @@
         android:orientation="vertical"
         android:gravity="center"
         android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="@dimen/size70"
+            android:src="@mipmap/no_image"
+            android:adjustViewBounds="true"
+            android:id="@+id/iv_avatar"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="@dimen/size10"
+            android:layout_height="@dimen/size70" />
         <EditText
             android:layout_width="match_parent"
             android:hint="@string/t_n_ng_nh_p"
@@ -48,6 +56,36 @@
             android:textSize="@dimen/size_text_20"
             android:id="@+id/edt_lai_mat_khau"
             android:inputType="textPassword"
+            android:layout_marginEnd="@dimen/size24"
+            android:textColorHint="@color/colorWhite"
+            android:background="@drawable/border_edt_white"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_width="match_parent"
+            android:hint="Họ và tên"
+            android:padding="@dimen/size12"
+            android:ems="10"
+            android:textColor="@color/colorWhite"
+            android:layout_marginTop="@dimen/size20"
+            android:layout_marginStart="@dimen/size24"
+            android:textSize="@dimen/size_text_20"
+            android:id="@+id/edt_ho_ten"
+            android:inputType="text"
+            android:layout_marginEnd="@dimen/size24"
+            android:textColorHint="@color/colorWhite"
+            android:background="@drawable/border_edt_white"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_width="match_parent"
+            android:hint="Tuổi"
+            android:padding="@dimen/size12"
+            android:ems="10"
+            android:textColor="@color/colorWhite"
+            android:layout_marginTop="@dimen/size20"
+            android:layout_marginStart="@dimen/size24"
+            android:textSize="@dimen/size_text_20"
+            android:id="@+id/edt_tuoi"
+            android:inputType="number"
             android:layout_marginEnd="@dimen/size24"
             android:textColorHint="@color/colorWhite"
             android:background="@drawable/border_edt_white"

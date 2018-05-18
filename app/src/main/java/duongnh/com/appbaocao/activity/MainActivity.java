@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import duongnh.com.appbaocao.R;
+import duongnh.com.appbaocao.common.PublicMethob;
 import duongnh.com.appbaocao.common.Value;
 import duongnh.com.appbaocao.fragment.main.CallSmsFragment;
 import duongnh.com.appbaocao.fragment.main.DanhMucFragment;
@@ -18,6 +19,7 @@ import duongnh.com.appbaocao.fragment.main.MenuFragment;
 import duongnh.com.appbaocao.fragment.main.MusicFragment;
 import duongnh.com.appbaocao.fragment.main.NoteFragment;
 import duongnh.com.appbaocao.fragment.main.ProFileFragment;
+import duongnh.com.appbaocao.fragment.main.WeatherFragment;
 
 /**
  * Created by Admin on 4/19/2018.
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private MenuFragment menuFragment = new MenuFragment();
     private CallSmsFragment callSmsFragment = new CallSmsFragment();
     private ProFileFragment proFileFragment = new ProFileFragment();
+    private WeatherFragment weatherFragment = new WeatherFragment();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +74,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         transaction.add(R.id.frame_main, menuFragment);
         transaction.add(R.id.frame_main, callSmsFragment);
         transaction.add(R.id.frame_main, proFileFragment);
+        transaction.add(R.id.frame_main, weatherFragment);
+        transaction.hide(weatherFragment);
         transaction.hide(proFileFragment);
         transaction.hide(callSmsFragment);
         transaction.hide(gameFragment);
@@ -86,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         transaction.show(show);
         temp = show;
         transaction.commit();
+        PublicMethob.animationShowLeft(this,frameMain);
     }
 
     public DanhMucFragment getDanhMucFragment() {
@@ -105,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public MenuFragment getMenuFragment() {
+        menuFragment.loadData();
         return menuFragment;
     }
 
@@ -118,6 +125,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public ProFileFragment getProFileFragment() {
         return proFileFragment;
+    }
+
+    public WeatherFragment getWeatherFragment() {
+        return weatherFragment;
     }
 
     @Override

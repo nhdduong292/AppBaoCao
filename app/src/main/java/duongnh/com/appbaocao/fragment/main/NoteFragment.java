@@ -29,7 +29,7 @@ import duongnh.com.appbaocao.model.Note;
  * Created by Admin on 4/20/2018.
  */
 
-public class NoteFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemLongClickListener {
+public class NoteFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemLongClickListener, AdapterView.OnItemClickListener {
     private ImageView ivBack;
     private MainActivity main;
     private Button btnAdd;
@@ -44,6 +44,7 @@ public class NoteFragment extends Fragment implements View.OnClickListener, Adap
     private EditText edtName, edtContent;
     private TextView tvCalendar, tvAdd;
     private LinearLayout llCalender;
+    private Note s;
 
 
     @Nullable
@@ -67,6 +68,7 @@ public class NoteFragment extends Fragment implements View.OnClickListener, Adap
         ivBack.setOnClickListener(this);
         btnAdd.setOnClickListener(this);
         listNote.setOnItemLongClickListener(this);
+        listNote.setOnItemClickListener(this);
         return view;
     }
 
@@ -124,10 +126,17 @@ public class NoteFragment extends Fragment implements View.OnClickListener, Adap
     @Override
     public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
         ImageView iv = view.findViewById(R.id.iv_delete);
+        iv.setVisibility(View.VISIBLE);
+        return true;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        ImageView iv = view.findViewById(R.id.iv_delete);
+        s = arrNote.get(position);
         iv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Note s = arrNote.get(position);
                 int KQ = noteDB.deleteNote(s.getId());
                 if(KQ > 0){
                     arrNote.clear();
@@ -138,6 +147,5 @@ public class NoteFragment extends Fragment implements View.OnClickListener, Adap
                 }
             }
         });
-        return true;
     }
 }

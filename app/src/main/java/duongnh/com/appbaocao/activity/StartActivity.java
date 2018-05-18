@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import duongnh.com.appbaocao.R;
+import duongnh.com.appbaocao.common.PublicMethob;
 import duongnh.com.appbaocao.common.Value;
 import duongnh.com.appbaocao.fragment.start.LoginFragment;
 import duongnh.com.appbaocao.fragment.start.RegisterFragment;
@@ -68,6 +69,7 @@ public class StartActivity extends AppCompatActivity {
         transaction.show(show);
         fragmentTemp = show;
         transaction.commit();
+        PublicMethob.animationShowLeft(this,frameLayout);
     }
 
     public Fragment getFragmentTemp() {
@@ -89,6 +91,9 @@ public class StartActivity extends AppCompatActivity {
         int permissionCAMERA = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
         int storagePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
         int callPhonePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE);
+        int smsPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS);
+        int readContacPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS);
+        int writeContacPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_CONTACTS);
         int locationPermission = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
         int writePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         int groupStorePermission = ContextCompat.checkSelfPermission(this, Manifest.permission_group.STORAGE);
@@ -97,6 +102,15 @@ public class StartActivity extends AppCompatActivity {
         List<String> listPermissionsNeeded = new ArrayList<>();
         if (permissionCAMERA != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.CAMERA);
+        }
+        if (smsPermission != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.SEND_SMS);
+        }
+        if (readContacPermission != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.READ_CONTACTS);
+        }
+        if (writeContacPermission != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.WRITE_CONTACTS);
         }
         if (locationPermission != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.ACCESS_FINE_LOCATION);

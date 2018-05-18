@@ -1,5 +1,6 @@
 package duongnh.com.appbaocao.fragment.main;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -20,15 +21,22 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import duongnh.com.appbaocao.R;
 import duongnh.com.appbaocao.activity.MainActivity;
+import duongnh.com.appbaocao.common.Utils;
 import duongnh.com.appbaocao.common.Value;
+import duongnh.com.appbaocao.database.TaiKhoanDataBase;
+import duongnh.com.appbaocao.model.TaiKhoan;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -37,7 +45,9 @@ public class ProFileFragment extends Fragment implements View.OnClickListener {
     private ImageView ivBack, ivAvatar;
     private EditText edtTenDN, edtMK, edtFullName, edtTuoi;
     private Button btnUpdate;
-    private String path;
+    private String path = "";
+    private TaiKhoanDataBase db;
+    private TaiKhoan tk;
 
     @Nullable
     @Override
@@ -54,6 +64,17 @@ public class ProFileFragment extends Fragment implements View.OnClickListener {
         btnUpdate = view.findViewById(R.id.btn_update);
 
         //binData
+        db = new TaiKhoanDataBase(main);
+//        ArrayList<TaiKhoan> arr = new ArrayList<>();
+//        arr.addAll(db.getAllNote());
+//        Toast.makeText(main, "1"+arr.get(0).getTenDN()+""+arr.get(0).getMatKhau(), Toast.LENGTH_SHORT).show();
+        tk = db.getTaiKhoan(Utils.getUser(main,Value.USER));
+        edtTenDN.setText(tk.getTenDN());
+        edtMK.setText(tk.getMatKhau());
+        edtFullName.setText(tk.getTen());
+        edtTuoi.setText(tk.getTuoi());
+        Picasso.with(main).load(tk.getAvatar()).into(ivAvatar);
+
         //initEvent
         btnUpdate.setOnClickListener(this);
         ivBack.setOnClickListener(this);
@@ -66,33 +87,43 @@ public class ProFileFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.iv_avatar:
-                AlertDialog.Builder dialog = new AlertDialog.Builder(main);
+                Button btnCamera, btnGallery;
+                final Dialog dialog = new Dialog(main);
                 dialog.setTitle("Avatar");
+                dialog.setContentView(R.layout.dialog_camera);
 
-                dialog.setMessage("Bạn muốn chọn ?");
-                dialog.setPositiveButton("Camera", new DialogInterface.OnClickListener() {
+                btnCamera = dialog.findViewById(R.id.btn_camera);
+                btnGallery = dialog.findViewById(R.id.btn_gallery);
+                btnCamera.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface paramDialogInterface, int paramInt) {
-                        // TODO Auto-generated method stub
+                    public void onClick(View v) {
                         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                         startActivityForResult(intent, Value.CAMERA);
+                        dialog.dismiss();
                     }
                 });
-                dialog.setNegativeButton("Gallery", new DialogInterface.OnClickListener() {
-
+                btnGallery.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                    public void onClick(View v) {
                         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                         startActivityForResult(intent, Value.GALLERY);
-
+                        dialog.dismiss();
                     }
                 });
+
                 dialog.show();
                 break;
             case R.id.iv_back_white:
                 main.showFragment(main.getProFileFragment(), main.getMenuFragment());
                 break;
             case R.id.btn_update:
+                tk = new TaiKhoan(edtTenDN.getText().toString(), edtMK.getText().toString(),
+                        edtFullName.getText().toString(),edtTuoi.getText().toString(), path);
+                db.updateTaiKhoan(tk);
+                Value.UPDATE = Value.CONFIG_UPDATE;
+
+                Toast.makeText(main, "Update thành công", Toast.LENGTH_SHORT).show();
+                main.showFragment(main.getProFileFragment(), main.getMenuFragment());
                 break;
         }
 

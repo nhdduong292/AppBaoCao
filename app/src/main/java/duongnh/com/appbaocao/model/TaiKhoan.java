@@ -5,14 +5,14 @@ package duongnh.com.appbaocao.model;
  */
 
 public class TaiKhoan {
-    private int id;
+    private String id;
     private String tenDN, matKhau;
     private String ten, tuoi, avatar;
 
     public TaiKhoan() {
     }
 
-    public TaiKhoan(int id, String tenDN, String matKhau) {
+    public TaiKhoan(String id, String tenDN, String matKhau) {
         this.id = id;
         this.tenDN = tenDN;
         this.matKhau = matKhau;
@@ -24,6 +24,15 @@ public class TaiKhoan {
     }
 
     public TaiKhoan(String tenDN, String matKhau, String ten, String tuoi, String avatar) {
+        this.tenDN = tenDN;
+        this.matKhau = matKhau;
+        this.ten = ten;
+        this.tuoi = tuoi;
+        this.avatar = avatar;
+    }
+
+    public TaiKhoan(String id, String tenDN, String matKhau, String ten, String tuoi, String avatar) {
+        this.id = id;
         this.tenDN = tenDN;
         this.matKhau = matKhau;
         this.ten = ten;
@@ -55,11 +64,11 @@ public class TaiKhoan {
         this.avatar = avatar;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

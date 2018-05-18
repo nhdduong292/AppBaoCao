@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,13 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Arrays;
 
 import duongnh.com.appbaocao.R;
 import duongnh.com.appbaocao.activity.MainActivity;
@@ -28,6 +36,8 @@ import duongnh.com.appbaocao.database.TaiKhoanDataBase;
 public class LoginFragment extends Fragment implements View.OnClickListener {
     private TextView tvDangKy;
     private Button btnDangNhap;
+//    private LoginButton loginButton;
+//    private CallbackManager callbackManager;
     private EditText edtTenDN, edtMK;
     private StartActivity main;
     private Intent intent;
@@ -44,12 +54,53 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         progressBar = view.findViewById(R.id.progreess_login);
         btnDangNhap = view.findViewById(R.id.btn_dang_nhap);
         tvDangKy = view.findViewById(R.id.tv_dang_ky);
+//        loginButton = view.findViewById(R.id.login_button);
         //binData
         db = new TaiKhoanDataBase(main);
+//        FacebookSdk.sdkInitialize(main);
+//        callbackManager = CallbackManager.Factory.create();
 
         //initEvent
         btnDangNhap.setOnClickListener(this);
         tvDangKy.setOnClickListener(this);
+//        loginButton.setReadPermissions(Arrays.asList("public_profile","email"));
+//        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+//            @Override
+//            public void onSuccess(LoginResult loginResult) {
+//                GraphRequest graphRequest = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+//                    @Override
+//                    public void onCompleted(JSONObject object, GraphResponse response) {
+//                        Log.d("JSON",response.getJSONObject().toString());
+//                        try {
+//                            String email= object.getString("email");
+//                            String name = object.getString("name");
+//                           String  first_name = object.getString("first_name");
+////                            ppvImage.setProfileId(Profile.getCurrentProfile().getId());
+//                            edtTenDN.setText(name);
+//                            edtMK.setText(email);
+////                            tvFisrt.setText(first_name);
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                });
+//                Bundle parameter = new Bundle();
+//                parameter.putString("fields","name,email,first_name");
+//                graphRequest.setParameters(parameter);
+//                graphRequest.executeAsync();
+//
+//            }
+//
+//            @Override
+//            public void onCancel() {
+//
+//            }
+//
+//            @Override
+//            public void onError(FacebookException error) {
+//
+//            }
+//        });
         return view;
     }
 
@@ -62,8 +113,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             case R.id.btn_dang_nhap:
                 setError();
                 if (db.login(edtTenDN.getText().toString(), edtMK.getText().toString())) {
-                    Utils.setSharePreValue(main, Value.STATUS_LOGIN, Value.LOGIN_TRUE);
-                    Utils.setUser(main,Value.USER, edtTenDN.getText().toString());
+//                    Utils.setSharePreValue(main, Value.STATUS_LOGIN, Value.LOGIN_TRUE);
+                    Utils.setUser(main, Value.USER,edtTenDN.getText().toString());
                     progressBar.setVisibility(View.VISIBLE);
                     new Handler().postDelayed(new Runnable() {
                         @Override
@@ -76,7 +127,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                     Toast.makeText(main, "Wrong username or password!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
                 break;
         }
     }
@@ -90,4 +140,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             return;
         }
     }
+
+
 }

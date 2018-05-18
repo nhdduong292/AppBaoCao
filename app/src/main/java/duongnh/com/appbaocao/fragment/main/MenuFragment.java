@@ -21,6 +21,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -33,6 +36,8 @@ import duongnh.com.appbaocao.activity.MainActivity;
 import duongnh.com.appbaocao.activity.StartActivity;
 import duongnh.com.appbaocao.common.Utils;
 import duongnh.com.appbaocao.common.Value;
+import duongnh.com.appbaocao.database.TaiKhoanDataBase;
+import duongnh.com.appbaocao.model.TaiKhoan;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -45,6 +50,8 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     private MainActivity main;
     private TextView tvten,tvTuoi,tvGioiTinh;
     private LinearLayout llHome, llNote, llGame, llMusic, llCall, llLog_out, llProfile;
+    private TaiKhoanDataBase db;
+    private TaiKhoan tk;
 
     @Nullable
     @Override
@@ -66,7 +73,12 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         tvGioiTinh = view.findViewById(R.id.tv_gioitinh);
 
         //binData
-        tvten.setText("User: "+Utils.getUser(main, Value.USER));
+        db = new TaiKhoanDataBase(main);
+        tk = db.getTaiKhoanFull(Utils.getUser(main,Value.USER));
+        tvten.setText(tk.getTen());
+        tvTuoi.setText("Tuổi: "+tk.getTuoi());
+        Toast.makeText(main, "avatar: "+tk.getAvatar(), Toast.LENGTH_SHORT).show();
+        Picasso.with(main).load(tk.getAvatar()).into(ivAvatar);
 
         //initEvent
         ivClose.setOnClickListener(this);
@@ -79,6 +91,10 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         ivAvatar.setOnClickListener(this);
         llProfile.setOnClickListener(this);
         return view;
+    }
+
+    public void loadData() {
+
     }
 
     @Override

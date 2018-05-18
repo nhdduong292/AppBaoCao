@@ -9,13 +9,18 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -30,7 +35,9 @@ import duongnh.com.appbaocao.model.Contacts;
 
 public class CallSmsFragment extends Fragment implements View.OnClickListener {
     private ListView listCall;
-    private ImageView ivBack;
+    private ImageView ivBack, ivSearch;
+    private EditText edtName;
+    private TextView tvName;
     private MainActivity main;
     private String phoneNumber, name;
     private ContactsAdapter adapter;
@@ -46,11 +53,18 @@ public class CallSmsFragment extends Fragment implements View.OnClickListener {
         //initView
         listCall = view.findViewById(R.id.list_call);
         ivBack = view.findViewById(R.id.iv_back_white);
+        ivSearch = view.findViewById(R.id.iv_search);
+        edtName = view.findViewById(R.id.edt_name);
+        tvName = view.findViewById(R.id.tv_name);
+
         //binData
+
         arr = new ArrayList<>();
         getNumber();
+
         //initEvent
         ivBack.setOnClickListener(this);
+        ivSearch.setOnClickListener(this);
         listCall.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -81,13 +95,35 @@ public class CallSmsFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.iv_back_white:
+                edtName.setVisibility(View.INVISIBLE);
+                tvName.setVisibility(View.VISIBLE);
                 main.showFragment(main.getCallSmsFragment(), main.getDanhMucFragment());
+                break;
+            case R.id.iv_search:
+                tvName.setVisibility(View.INVISIBLE);
+                edtName.setVisibility(View.VISIBLE);
+                edtName.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                        Toast.makeText(main, "1", Toast.LENGTH_SHORT).show();
+                }
+
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        Toast.makeText(main, "2", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+                        Toast.makeText(main, "3", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 break;
         }
     }
     private void showDialogCallSms(final int position) {
 
-        final Dialog dialog = new Dialog(main);
+        final Dialog dialog = new Dialog(main, R.style.Theme_AppCompat_Dialog_Alert);
         dialog.setContentView(R.layout.dialog_call_sms);
         ImageView ivClose = dialog.findViewById(R.id.iv_close_dialog);
         btnCall = dialog.findViewById(R.id.btn_call);

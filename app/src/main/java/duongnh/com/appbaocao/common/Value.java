@@ -21,4 +21,7 @@ public class Value {
 
     public static final int CAMERA=112;
     public static final int GALLERY=113;
+
+    public static  int UPDATE = 0;
+    public static final int CONFIG_UPDATE = 29;
 }

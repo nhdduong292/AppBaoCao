@@ -36,9 +36,11 @@ public class ContactsAdapter extends ArrayAdapter<Contacts> {
         convertView = LayoutInflater.from(mContext).inflate(R.layout.item_contacts, parent, false);
         TextView tvName = convertView.findViewById(R.id.tv_name);
         TextView tvSdt = convertView.findViewById(R.id.tv_sdt);
+        TextView tvNumber = convertView.findViewById(R.id.tv_number);
         Contacts c = arrC.get(position);
         tvName.setText(c.getName());
         tvSdt.setText(c.getNumber());
+        tvNumber.setText(position+1+"");
         return convertView;
     }
 }

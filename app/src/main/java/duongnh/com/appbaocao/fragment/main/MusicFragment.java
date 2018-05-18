@@ -17,6 +17,7 @@ import android.widget.Toast;
 import duongnh.com.appbaocao.R;
 import duongnh.com.appbaocao.activity.MainActivity;
 import duongnh.com.appbaocao.activity.MusicActivity;
+import duongnh.com.appbaocao.database.TaiKhoanDataBase;
 
 /**
  * Created by Admin on 4/20/2018.
@@ -28,6 +29,7 @@ public class MusicFragment extends Fragment implements View.OnClickListener {
     private TextView tvMusicOnline, tvMusicOff;
     Context context;
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -36,9 +38,11 @@ public class MusicFragment extends Fragment implements View.OnClickListener {
         main = (MainActivity) getActivity();
         ivBack = view.findViewById(R.id.iv_back_white);
         tvMusicOnline = view.findViewById(R.id.tv_music_online);
-tvMusicOff = view.findViewById(R.id.tv_music_tu_may);
+        tvMusicOff = view.findViewById(R.id.tv_music_tu_may);
 
         //binData
+
+
         //initEvent
         ivBack.setOnClickListener(this);
         tvMusicOnline.setOnClickListener(this);
@@ -72,6 +76,7 @@ tvMusicOff = view.findViewById(R.id.tv_music_tu_may);
                 Toast.makeText(context, appName + " app is not enabled.", Toast.LENGTH_SHORT).show();
         else Toast.makeText(context, appName + " app is not installed.", Toast.LENGTH_SHORT).show();
     }
+
     private static boolean isAppInstalled(Context context, String packageName) {
         PackageManager pm = context.getPackageManager();
         try {
