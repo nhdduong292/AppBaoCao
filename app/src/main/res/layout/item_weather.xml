@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:padding="@dimen/size8"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Ngay thang"
+            android:gravity="center"
+
+            android:textSize="@dimen/size_text_26"
+            android:id="@+id/tv_ngay"
+            android:textColor="@color/colorBlack"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="trang thai"
+            android:id="@+id/tv_trangthai"
+            android:textSize="@dimen/size_text_18"
+            android:textColor="@color/colorOrange20"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="0dp"
+            android:id="@+id/iv_weather"
+            android:layout_weight="1"
+            android:src="@mipmap/no_image"
+            android:layout_height="@dimen/size90" />
+        <TextView
+            android:layout_width="0dp"
+            android:text="nhiet do"
+            android:lines="1"
+            android:textSize="@dimen/size_text_22"
+            android:textColor="@color/colorRedGGPlus"
+            android:paddingStart="@dimen/size12"
+            android:id="@+id/tv_nhiet_do"
+            android:layout_weight="2"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    
+
+</LinearLayout>

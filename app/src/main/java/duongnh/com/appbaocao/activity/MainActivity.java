@@ -20,6 +20,7 @@ import duongnh.com.appbaocao.fragment.main.MusicFragment;
 import duongnh.com.appbaocao.fragment.main.NoteFragment;
 import duongnh.com.appbaocao.fragment.main.ProFileFragment;
 import duongnh.com.appbaocao.fragment.main.WeatherFragment;
+import duongnh.com.appbaocao.fragment.main.WeatherNextFragment;
 
 /**
  * Created by Admin on 4/19/2018.
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private CallSmsFragment callSmsFragment = new CallSmsFragment();
     private ProFileFragment proFileFragment = new ProFileFragment();
     private WeatherFragment weatherFragment = new WeatherFragment();
+    private WeatherNextFragment weatherNextFragment = new WeatherNextFragment();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +77,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         transaction.add(R.id.frame_main, callSmsFragment);
         transaction.add(R.id.frame_main, proFileFragment);
         transaction.add(R.id.frame_main, weatherFragment);
+        transaction.add(R.id.frame_main, weatherNextFragment);
+        transaction.hide(weatherNextFragment);
         transaction.hide(weatherFragment);
         transaction.hide(proFileFragment);
         transaction.hide(callSmsFragment);
@@ -129,6 +133,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public WeatherFragment getWeatherFragment() {
         return weatherFragment;
+    }
+
+    public WeatherNextFragment getWeatherNextFragment() {
+        weatherNextFragment.binData();
+        return weatherNextFragment;
     }
 
     @Override

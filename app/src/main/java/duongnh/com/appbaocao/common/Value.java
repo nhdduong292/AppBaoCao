@@ -24,4 +24,7 @@ public class Value {
 
     public static  int UPDATE = 0;
     public static final int CONFIG_UPDATE = 29;
+
+    public static String WEATHER = "Hanoi";
+
 }

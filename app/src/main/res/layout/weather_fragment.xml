@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/colorOrange20">
+
+        <ImageView
+            android:id="@+id/iv_back_white"
+            android:layout_width="@dimen/size50"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:padding="@dimen/size12"
+            android:src="@mipmap/ic_back_white" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="Weather"
+            android:visibility="invisible"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/size24" />
+        <ImageView
+            android:id="@+id/iv_search"
+            android:layout_width="@dimen/size50"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:padding="@dimen/size12"
+            android:src="@mipmap/ic_search_white_24dp" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_marginStart="@dimen/size50"
+            android:hint="Name"
+            android:inputType="text"
+            android:textSize="@dimen/size_text_22"
+            android:id="@+id/edt_name"
+            android:visibility="visible"
+            android:padding="@dimen/size8"
+            android:textColorHint="@color/colorWhite"
+            android:textColor="@color/colorWhite"
+            android:layout_marginEnd="@dimen/size50"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+        <!--<EditText-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:id="@+id/edt_name_weather"-->
+            <!--android:hint="City, State"-->
+            <!--android:layout_height="wrap_content" />-->
+        <!--<Button-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:text="Ok"-->
+            <!--android:id="@+id/btn_ok"-->
+            <!--android:layout_height="wrap_content" />-->
+
+    <!--</LinearLayout>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="9"><TextView
+        android:layout_width="wrap_content"
+        android:text="Tên thành phố"
+        android:id="@+id/tv_thanhpho"
+        android:layout_margin="@dimen/size8"
+        android:textSize="@dimen/size_text_22"
+        android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Tên quốc gia"
+            android:layout_marginStart="@dimen/size8"
+            android:id="@+id/tv_quocgia"
+            android:textSize="@dimen/size_text_22"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_width="@dimen/size150"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/size4"
+            android:id="@+id/iv_weather"
+            android:layout_height="@dimen/size150" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Nhiet do"
+            android:id="@+id/tv_nhietdo"
+            android:layout_gravity="center"
+            android:textColor="@color/colorRedGGPlus"
+            android:textSize="@dimen/size_text_32"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Trang thai"
+            android:layout_gravity="center"
+            android:id="@+id/tv_trangthai"
+            android:textSize="@dimen/size_text_32"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Độ ẩm"
+                    android:textSize="@dimen/size_text_20"
+                    android:textColor="@color/colorBlack"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="50%"
+                    android:id="@+id/tv_do_am"
+                    android:textSize="@dimen/size_text_20"
+                    android:textColor="@color/colorBlack"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Mây"
+                    android:textSize="@dimen/size_text_20"
+                    android:textColor="@color/colorBlack"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="50%"
+                    android:id="@+id/tv_may"
+                    android:textSize="@dimen/size_text_20"
+                    android:textColor="@color/colorBlack"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Gió"
+                    android:textSize="@dimen/size_text_20"
+                    android:textColor="@color/colorBlack"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="50%"
+                    android:id="@+id/tv_gio"
+                    android:textSize="@dimen/size_text_20"
+                    android:textColor="@color/colorBlack"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:text="ngay thang"
+            android:padding="@dimen/size8"
+            android:textSize="@dimen/size_text_18"
+            android:gravity="center"
+            android:id="@+id/tv_day"
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="match_parent"
+            android:text="Các ngày tiếp theo"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/size_text_24"
+            android:id="@+id/btn_weather"
+            android:layout_margin="@dimen/size8"
+            android:background="@drawable/button_click"
+            android:layout_height="wrap_content" /></LinearLayout>
+</LinearLayout>

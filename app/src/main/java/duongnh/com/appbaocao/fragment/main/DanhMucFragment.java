@@ -43,8 +43,8 @@ ivMore = view.findViewById(R.id.iv_more);
         arrDM.add(new DanhMuc("Music",R.mipmap.ic_queue_music_white_48dp,R.color.colorOrange));
         arrDM.add(new DanhMuc("Note",R.mipmap.ic_create_white_48dp,R.color.colorGrey));
         arrDM.add(new DanhMuc("Call/Sms",R.mipmap.ic_call_white_48dp,R.color.colorAccent));
-        arrDM.add(new DanhMuc("Weather",R.mipmap.ic_call_white_48dp,R.color.colorBlue));
-        arrDM.add(new DanhMuc("Other..",R.mipmap.ic_call_white_48dp,R.color.colorYellow));
+        arrDM.add(new DanhMuc("Weather",R.mipmap.baseline_wb_cloudy_white_48dp,R.color.colorBlue));
+        arrDM.add(new DanhMuc("Other..",R.mipmap.baseline_more_horiz_white_48dp,R.color.colorYellow));
         adapter = new DanhMucAdapter(main, R.layout.item_danh_muc,arrDM);
         gridView.setAdapter(adapter);
 
