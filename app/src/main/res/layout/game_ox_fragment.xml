@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:background="@color/colorOrange"
+    android:background="@color/colorGrey_40"
     android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -69,7 +69,7 @@
         <Button
             android:id="@+id/button_00"
             android:layout_width="0dp"
-            android:background="@color/colorGreenOriginal"
+            android:background="@color/colorOrange20"
             android:layout_height="match_parent"
             android:textColor="@color/colorWhite"
 
@@ -80,7 +80,7 @@
         <Button
             android:id="@+id/button_01"
             android:layout_width="0dp"
-            android:background="@color/colorGreenOriginal"
+            android:background="@color/colorOrange20"
             android:layout_height="match_parent"
             android:textColor="@color/colorWhite"
             android:layout_margin="@dimen/size4"
@@ -90,7 +90,7 @@
         <Button
             android:id="@+id/button_02"
             android:layout_width="0dp"
-            android:background="@color/colorGreenOriginal"
+            android:background="@color/colorOrange20"
             android:layout_height="match_parent"
             android:textColor="@color/colorWhite"
 
@@ -108,7 +108,7 @@
         <Button
             android:id="@+id/button_10"
             android:layout_width="0dp"
-            android:background="@color/colorGreenOriginal"
+            android:background="@color/colorOrange20"
             android:layout_height="match_parent"
             android:textColor="@color/colorWhite"
             android:layout_margin="@dimen/size4"
@@ -117,7 +117,7 @@
         <Button
             android:id="@+id/button_11"
             android:layout_width="0dp"
-            android:background="@color/colorGreenOriginal"
+            android:background="@color/colorOrange20"
             android:layout_height="match_parent"
             android:textColor="@color/colorWhite"
             android:layout_margin="@dimen/size4"
@@ -126,7 +126,7 @@
         <Button
             android:id="@+id/button_12"
             android:layout_width="0dp"
-            android:background="@color/colorGreenOriginal"
+            android:background="@color/colorOrange20"
             android:layout_height="match_parent"
             android:textColor="@color/colorWhite"
             android:layout_margin="@dimen/size4"
@@ -143,7 +143,7 @@
         <Button
             android:id="@+id/button_20"
             android:layout_width="0dp"
-            android:background="@color/colorGreenOriginal"
+            android:background="@color/colorOrange20"
             android:layout_height="match_parent"
             android:textColor="@color/colorWhite"
             android:layout_margin="@dimen/size4"
@@ -152,7 +152,7 @@
         <Button
             android:id="@+id/button_21"
             android:layout_width="0dp"
-            android:background="@color/colorGreenOriginal"
+            android:background="@color/colorOrange20"
             android:layout_height="match_parent"
             android:textColor="@color/colorWhite"
             android:layout_margin="@dimen/size4"
@@ -161,7 +161,7 @@
         <Button
             android:id="@+id/button_22"
             android:layout_width="0dp"
-            android:background="@color/colorGreenOriginal"
+            android:background="@color/colorOrange20"
             android:layout_height="match_parent"
             android:textColor="@color/colorWhite"
             android:layout_margin="@dimen/size4"

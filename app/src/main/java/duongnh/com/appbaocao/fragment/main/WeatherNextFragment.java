@@ -72,7 +72,7 @@ public class WeatherNextFragment extends Fragment implements View.OnClickListene
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
+                        listWeather.clear();
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             JSONObject jsonCity = jsonObject.getJSONObject("city");
@@ -83,16 +83,13 @@ public class WeatherNextFragment extends Fragment implements View.OnClickListene
 
                             for (int i = 0; i < jsonList.length(); i++) {
 
-                                if (i == 0 || i == jsonList.length()-1 || i == 10 || i == 18 || i ==25){
+                                if (i == 1 || i == 9|| i == 17 || i== 25 || i == 33 || i == jsonList.length()-2){
                                     JSONObject jsonObjectList = jsonList.getJSONObject(i);
                                     String ngay = jsonObjectList.getString("dt");
                                     long l = Long.parseLong(ngay);
                                     date = new Date(l * 1000L);
                                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEEE yyyy-MM-dd");
                                     String time = simpleDateFormat.format(date);
-
-                                    Toast.makeText(main, ""+date, Toast.LENGTH_SHORT).show();
-
                                     JSONObject jsonTemp = jsonObjectList.getJSONObject("main");
                                     String min = jsonTemp.getString("temp_min");
                                     String max = jsonTemp.getString("temp_max");
@@ -110,7 +107,6 @@ public class WeatherNextFragment extends Fragment implements View.OnClickListene
                                     w = new Weather(time, status, icon, minn, maxx);
                                     listWeather.add(w);
                                 }
-
                             }
                             adapter.notifyDataSetChanged();
 

@@ -1,6 +1,7 @@
 package duongnh.com.appbaocao.activity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -23,7 +25,7 @@ import duongnh.com.appbaocao.model.Song;
  * Created by Admin on 4/27/2018.
  */
 
-public class MusicActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener {
+public class MusicActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, View.OnClickListener, SeekBar.OnSeekBarChangeListener {
     private ListView mListView;
     private SongAdapter mSongAdapter;
     private LinearLayout mLinearLayout;
@@ -32,6 +34,7 @@ public class MusicActivity extends AppCompatActivity implements AdapterView.OnIt
     private ArrayList<Song> mListSong;
     private MediaManager mediaManager;
     private ImageView ivBack;
+    private SeekBar seekBar;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,7 @@ public class MusicActivity extends AppCompatActivity implements AdapterView.OnIt
         mSingger = findViewById(R.id.tv_singger);
         mPlay = findViewById(R.id.iv_play);
         ivBack = findViewById(R.id.iv_back_black);
+        seekBar = findViewById(R.id.seek_bar);
 
         //binData
         mListSong = new ArrayList<>();
@@ -57,6 +61,8 @@ public class MusicActivity extends AppCompatActivity implements AdapterView.OnIt
         mPlay.setOnClickListener(this);
         mLinearLayout.setOnClickListener(this);
         ivBack.setOnClickListener(this);
+
+        seekBar.setOnSeekBarChangeListener(this);
 
     }
 
@@ -89,5 +95,44 @@ public class MusicActivity extends AppCompatActivity implements AdapterView.OnIt
         mName.setText(s.getmName());
         mSingger.setText(s.getmArtist());
         mPlay.setImageResource(R.mipmap.ic_pause_black_24dp);
+        seekBar.setMax(s.getmDuration());
+        new UpdateSeekBar().execute();
+    }
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+        mediaManager.seek(progress);
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+        mediaManager.seek(seekBar.getProgress());
+    }
+
+    public class UpdateSeekBar extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            while (mediaManager.isStarted()) {
+                try {
+                    Thread.sleep(1000);
+                    publishProgress();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+//            mTimeS.setText(mediaManager.getCurrentTimeText());
+            seekBar.setProgress(mediaManager.getCurrentTime());
+        }
     }
 }

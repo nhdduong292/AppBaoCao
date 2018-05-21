@@ -1,6 +1,9 @@
 package duongnh.com.appbaocao.fragment.main;
 
+
+import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.DialogFragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -16,8 +20,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import duongnh.com.appbaocao.R;
 import duongnh.com.appbaocao.activity.MainActivity;
@@ -30,7 +38,7 @@ import duongnh.com.appbaocao.model.Note;
  */
 
 public class NoteFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemLongClickListener, AdapterView.OnItemClickListener {
-    private ImageView ivBack;
+    private ImageView ivBack, ivCalendar;
     private MainActivity main;
     private Button btnAdd;
     private ListView listNote;
@@ -45,6 +53,8 @@ public class NoteFragment extends Fragment implements View.OnClickListener, Adap
     private TextView tvCalendar, tvAdd;
     private LinearLayout llCalender;
     private Note s;
+    Calendar cal;
+    Date date;
 
 
     @Nullable
@@ -56,13 +66,22 @@ public class NoteFragment extends Fragment implements View.OnClickListener, Adap
         ivBack = view.findViewById(R.id.iv_back_white);
         btnAdd = view.findViewById(R.id.btn_add_note);
         listNote = view.findViewById(R.id.list_note);
+        tvCalendar = view.findViewById(R.id.tv_calendar);
+        llCalender = view.findViewById(R.id.ll_calendar);
 
         //binData
         arrNote = new ArrayList<>();
         noteDB = new NoteDataBase(main);
         arrNote = noteDB.getAllNote();
-        adapter = new NoteAdapter(main,R.layout.item_note, arrNote);
+        adapter = new NoteAdapter(main, R.layout.item_note, arrNote);
         listNote.setAdapter(adapter);
+        cal=Calendar.getInstance();
+        SimpleDateFormat dft=null;
+        //Định dạng kiểu ngày / tháng /năm
+        dft=new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        String strDate=dft.format(cal.getTime());
+        //hiển thị lên giao diện
+//        tvCalendar.setText(strDate);
 
         //initEvent
         ivBack.setOnClickListener(this);
@@ -102,16 +121,44 @@ public class NoteFragment extends Fragment implements View.OnClickListener, Adap
         llCalender.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                final int[] ngay = new int[1];
+                final int[] thang = new int[1];
+                final int[] nam = new int[1];
+                DatePickerDialog.OnDateSetListener callback = new DatePickerDialog.OnDateSetListener() {
+                    //Sự kiện khi click vào nút Done trên Dialog
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                        // Set text cho textView
+                        ngay[0] = day;
+                        thang[0] = month;
+                        nam[0] = year;
+                        tvCalendar.setText(day + "/" + (month +1) + "/" + year);
+                        //Lưu vết lại ngày mới cập nhật
+                        cal.set(year, month, day);
+                        date = cal.getTime();
+                    }
+                };
+//                String s=tvCalendar.getText()+"";
+//                //Lấy ra chuỗi của textView Date
+//                String strArrtmp[]=s.split("/");
+//                int ngay=Integer.parseInt(strArrtmp[0]);
+//                int thang=Integer.parseInt(strArrtmp[1]) - 1;
+//                int nam=Integer.parseInt(strArrtmp[2]);
+                //Hiển thị ra Dialog
+                DatePickerDialog pic=new DatePickerDialog(
+                        main,android.R.style.Theme_Translucent_NoTitleBar_Fullscreen,
+                        callback, nam[0], thang[0], ngay[0]);
+                pic.setTitle("Chọn ngày hoàn thành");
+                pic.show();
             }
         });
         tvAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (edtName.getText().toString().isEmpty() && edtContent.getText().toString().isEmpty()){
+                if (edtName.getText().toString().isEmpty() && edtContent.getText().toString().isEmpty()) {
                     Toast.makeText(main, "Vui lòng nhập thông tin!", Toast.LENGTH_SHORT).show();
-                }else{
-                    n = new Note(edtName.getText().toString(),edtContent.getText().toString(),"");
+                } else {
+                    n = new Note(edtName.getText().toString(), edtContent.getText().toString(), tvCalendar.getText().toString());
                     noteDB.addNote(n);
                     arrNote.clear();
                     arrNote.addAll(noteDB.getAllNote());
@@ -138,7 +185,7 @@ public class NoteFragment extends Fragment implements View.OnClickListener, Adap
             @Override
             public void onClick(View v) {
                 int KQ = noteDB.deleteNote(s.getId());
-                if(KQ > 0){
+                if (KQ > 0) {
                     arrNote.clear();
                     arrNote.addAll(noteDB.getAllNote());
                     if (adapter != null) {

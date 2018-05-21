@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,6 +65,8 @@ ivMore = view.findViewById(R.id.iv_more);
                 }
                 else if(position == 4){
                     main.showFragment(main.getDanhMucFragment(), main.getWeatherFragment());
+                }else if(position == 5){
+                    Toast.makeText(main, "Updating...", Toast.LENGTH_SHORT).show();
                 }
             }
         });
