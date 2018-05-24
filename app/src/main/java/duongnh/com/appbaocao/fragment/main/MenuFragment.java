@@ -70,12 +70,12 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         ivAvatar = view.findViewById(R.id.iv_avatar);
         tvten = view.findViewById(R.id.tv_ten);
         tvTuoi = view.findViewById(R.id.tv_tuoi);
-        tvGioiTinh = view.findViewById(R.id.tv_gioitinh);
+
 
         //binData
         db = new TaiKhoanDataBase(main);
         tk = db.getTaiKhoanFull(Utils.getUser(main,Value.USER));
-        tvten.setText(tk.getTen());
+        tvten.setText("Tên: "+tk.getTen());
         tvTuoi.setText("Tuổi: "+tk.getTuoi());
         Toast.makeText(main, "avatar: "+tk.getAvatar(), Toast.LENGTH_SHORT).show();
         byte[] image = tk.getAvatar();
