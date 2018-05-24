@@ -57,50 +57,11 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 //        loginButton = view.findViewById(R.id.login_button);
         //binData
         db = new TaiKhoanDataBase(main);
-//        FacebookSdk.sdkInitialize(main);
-//        callbackManager = CallbackManager.Factory.create();
 
         //initEvent
         btnDangNhap.setOnClickListener(this);
         tvDangKy.setOnClickListener(this);
-//        loginButton.setReadPermissions(Arrays.asList("public_profile","email"));
-//        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-//            @Override
-//            public void onSuccess(LoginResult loginResult) {
-//                GraphRequest graphRequest = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
-//                    @Override
-//                    public void onCompleted(JSONObject object, GraphResponse response) {
-//                        Log.d("JSON",response.getJSONObject().toString());
-//                        try {
-//                            String email= object.getString("email");
-//                            String name = object.getString("name");
-//                           String  first_name = object.getString("first_name");
-////                            ppvImage.setProfileId(Profile.getCurrentProfile().getId());
-//                            edtTenDN.setText(name);
-//                            edtMK.setText(email);
-////                            tvFisrt.setText(first_name);
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                });
-//                Bundle parameter = new Bundle();
-//                parameter.putString("fields","name,email,first_name");
-//                graphRequest.setParameters(parameter);
-//                graphRequest.executeAsync();
-//
-//            }
-//
-//            @Override
-//            public void onCancel() {
-//
-//            }
-//
-//            @Override
-//            public void onError(FacebookException error) {
-//
-//            }
-//        });
+
         return view;
     }
 

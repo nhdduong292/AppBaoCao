@@ -13,7 +13,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/size170"
-            android:background="@mipmap/a2"
+            android:background="@mipmap/back1"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -51,15 +51,6 @@
                     android:textStyle="bold" />
 
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/tv_gioitinh"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Giới tính: xxx"
-                android:textColor="@color/colorWhite"
-                android:textSize="@dimen/size_text_22"
-                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -179,14 +170,14 @@
                 android:layout_width="@dimen/size40"
                 android:layout_height="@dimen/size40"
                 android:padding="@dimen/size4"
-                android:src="@mipmap/ic_economic_white" />
+                android:src="@mipmap/baseline_wb_cloudy_white_48dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/size8"
                 android:gravity="center_vertical"
-                android:text="@string/profile"
+                android:text="Weather"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/size_text_20" />
         </LinearLayout>

@@ -7,7 +7,8 @@ package duongnh.com.appbaocao.model;
 public class TaiKhoan {
     private String id;
     private String tenDN, matKhau;
-    private String ten, tuoi, avatar;
+    private String ten, tuoi;
+    private byte[] image;
 
     public TaiKhoan() {
     }
@@ -23,21 +24,21 @@ public class TaiKhoan {
         this.matKhau = matKhau;
     }
 
-    public TaiKhoan(String tenDN, String matKhau, String ten, String tuoi, String avatar) {
+    public TaiKhoan(String tenDN, String matKhau, String ten, String tuoi, byte[] image) {
         this.tenDN = tenDN;
         this.matKhau = matKhau;
         this.ten = ten;
         this.tuoi = tuoi;
-        this.avatar = avatar;
+        this.image = image;
     }
 
-    public TaiKhoan(String id, String tenDN, String matKhau, String ten, String tuoi, String avatar) {
+    public TaiKhoan(String id, String tenDN, String matKhau, String ten, String tuoi, byte[] image) {
         this.id = id;
         this.tenDN = tenDN;
         this.matKhau = matKhau;
         this.ten = ten;
         this.tuoi = tuoi;
-        this.avatar = avatar;
+        this.image = image;
     }
 
     public String getTen() {
@@ -56,12 +57,12 @@ public class TaiKhoan {
         this.tuoi = tuoi;
     }
 
-    public String getAvatar() {
-        return avatar;
+    public byte[] getAvatar() {
+        return image;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
+    public void setAvatar(byte[] avatar) {
+        this.image = avatar;
     }
 
     public String getId() {

@@ -76,12 +76,6 @@ public class NoteFragment extends Fragment implements View.OnClickListener, Adap
         adapter = new NoteAdapter(main, R.layout.item_note, arrNote);
         listNote.setAdapter(adapter);
         cal=Calendar.getInstance();
-        SimpleDateFormat dft=null;
-        //Định dạng kiểu ngày / tháng /năm
-        dft=new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-        String strDate=dft.format(cal.getTime());
-        //hiển thị lên giao diện
-//        tvCalendar.setText(strDate);
 
         //initEvent
         ivBack.setOnClickListener(this);
@@ -138,12 +132,6 @@ public class NoteFragment extends Fragment implements View.OnClickListener, Adap
                         date = cal.getTime();
                     }
                 };
-//                String s=tvCalendar.getText()+"";
-//                //Lấy ra chuỗi của textView Date
-//                String strArrtmp[]=s.split("/");
-//                int ngay=Integer.parseInt(strArrtmp[0]);
-//                int thang=Integer.parseInt(strArrtmp[1]) - 1;
-//                int nam=Integer.parseInt(strArrtmp[2]);
                 //Hiển thị ra Dialog
                 DatePickerDialog pic=new DatePickerDialog(
                         main,android.R.style.Theme_Translucent_NoTitleBar_Fullscreen,

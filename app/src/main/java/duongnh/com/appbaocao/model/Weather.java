@@ -1,6 +1,7 @@
 package duongnh.com.appbaocao.model;
 
 public class Weather {
+    private int id;
     private String ngay, trangThai, image, minTemp, maxTemp;
 
     public Weather(String ngay, String trangThai, String image, String minTemp, String maxTemp) {

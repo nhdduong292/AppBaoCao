@@ -78,8 +78,9 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         tvten.setText(tk.getTen());
         tvTuoi.setText("Tuổi: "+tk.getTuoi());
         Toast.makeText(main, "avatar: "+tk.getAvatar(), Toast.LENGTH_SHORT).show();
-        Picasso.with(main).load(tk.getAvatar()).into(ivAvatar);
-
+        byte[] image = tk.getAvatar();
+        Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0 ,image.length);
+       ivAvatar.setImageBitmap(bitmap);
         //initEvent
         ivClose.setOnClickListener(this);
         llHome.setOnClickListener(this);
@@ -128,7 +129,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
 
                 break;
             case R.id.ll_profile:
-                main.showFragment(main.getMenuFragment(), main.getProFileFragment());
+                main.showFragment(main.getMenuFragment(), main.getWeatherFragment());
                 break;
         }
     }

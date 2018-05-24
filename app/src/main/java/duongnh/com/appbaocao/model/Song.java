@@ -5,6 +5,7 @@ package duongnh.com.appbaocao.model;
  */
 
 public class Song {
+    private int id;
     private String mName, mPath, mAlbum, mArtist;
     private int mDuration;
 

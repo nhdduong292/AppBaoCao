@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.FrameLayout;
 
 import duongnh.com.appbaocao.R;
-import duongnh.com.appbaocao.fragment.GameOXFragment;
+import duongnh.com.appbaocao.fragment.main.GameOXFragment;
 
 /**
  * Created by Admin on 4/23/2018.

@@ -73,7 +73,7 @@ public class ProFileFragment extends Fragment implements View.OnClickListener {
         edtMK.setText(tk.getMatKhau());
         edtFullName.setText(tk.getTen());
         edtTuoi.setText(tk.getTuoi());
-        Picasso.with(main).load(tk.getAvatar()).into(ivAvatar);
+
 
         //initEvent
         btnUpdate.setOnClickListener(this);
@@ -117,9 +117,9 @@ public class ProFileFragment extends Fragment implements View.OnClickListener {
                 main.showFragment(main.getProFileFragment(), main.getMenuFragment());
                 break;
             case R.id.btn_update:
-                tk = new TaiKhoan(edtTenDN.getText().toString(), edtMK.getText().toString(),
-                        edtFullName.getText().toString(),edtTuoi.getText().toString(), path);
-                db.updateTaiKhoan(tk);
+//                tk = new TaiKhoan(edtTenDN.getText().toString(), edtMK.getText().toString(),
+//                        edtFullName.getText().toString(),edtTuoi.getText().toString(), path);
+//                db.updateTaiKhoan(tk);
                 Value.UPDATE = Value.CONFIG_UPDATE;
 
                 Toast.makeText(main, "Update thành công", Toast.LENGTH_SHORT).show();

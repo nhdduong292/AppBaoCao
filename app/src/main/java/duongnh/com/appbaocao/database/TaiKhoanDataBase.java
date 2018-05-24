@@ -34,7 +34,7 @@ public class TaiKhoanDataBase extends SQLiteOpenHelper {
             MATKHAU + " TEXT, " +
             TEN + " TEXT, " +
             TUOI + " TEXT, " +
-            AVATAR + " TEXT)";
+            AVATAR + " BLOG NOT NULL)";
 
     public TaiKhoanDataBase(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -114,7 +114,7 @@ public class TaiKhoanDataBase extends SQLiteOpenHelper {
         if(cursor != null)
             cursor.moveToFirst();
         TaiKhoan student = new TaiKhoan(cursor.getString(0), cursor.getString(1),
-                cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getString(5));
+                cursor.getString(2),cursor.getString(3),cursor.getString(4),cursor.getBlob(5));
         return student;
     }
 

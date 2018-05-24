@@ -27,8 +27,10 @@ import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Random;
 import java.util.UUID;
 
@@ -97,7 +99,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                             main.showFragment(main.getRegisterFragment(), main.getLoginFragment());
                         }
                     }, 2000);
-//                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(main, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(main, "Tài khoản đã tồn tại !!", Toast.LENGTH_SHORT).show();
                     return;
@@ -162,7 +164,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
         String id = "D"+uuid;
 
         tk = new TaiKhoan(id,edtTenDN.getText().toString(), edtMK.getText().toString(),
-                edtHoTen.getText().toString(), edtTuoi.getText().toString(), path);
+                edtHoTen.getText().toString(), edtTuoi.getText().toString(), imageViewToByte(ivAvatar));
 
         Log.e("EE",tk.getId().toString());
         return true;
@@ -175,6 +177,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
             /*If result for REQUEST_CAMERA*/
             if (requestCode == Value.CAMERA) {
                 Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+
                 ByteArrayOutputStream bytes = new ByteArrayOutputStream();
                 thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, bytes); //quality image
                 File destination = new File(Environment.getExternalStorageDirectory(),
@@ -190,31 +193,49 @@ public class RegisterFragment extends Fragment implements View.OnClickListener {
                 }
                 ivAvatar.setImageBitmap(thumbnail);
                 //path=destination.getPath();
-                path = thumbnail.toString();
+
 
             } else if (requestCode == Value.GALLERY) { /*If result for Gallery*/
 
                 if (resultCode == RESULT_OK) {
+//                    Uri uri = data.getData();
+//                    String[] projection = {MediaStore.Images.Media.DATA};
+//
+//                    Cursor cursor = getActivity().getContentResolver().query(uri, projection, null, null, null);
+//                    cursor.moveToFirst();
+//
+//                    int columnIndex = cursor.getColumnIndex(projection[0]);
+//                    String selectedImagePath = cursor.getString(columnIndex);
+//                    cursor.close();
+//
+//                    Bitmap bitmap = BitmapFactory.decodeFile(selectedImagePath);
+//
+//
+//                    ivAvatar.setImageBitmap(bitmap);
                     Uri uri = data.getData();
-                    String[] projection = {MediaStore.Images.Media.DATA};
 
-                    Cursor cursor = getActivity().getContentResolver().query(uri, projection, null, null, null);
-                    cursor.moveToFirst();
+                    try {
+                        InputStream inputStream = main.getContentResolver().openInputStream(uri);
 
-                    int columnIndex = cursor.getColumnIndex(projection[0]);
-                    String selectedImagePath = cursor.getString(columnIndex);
-                    cursor.close();
+                        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                        ivAvatar.setImageBitmap(bitmap);
 
-                    Bitmap bitmap = BitmapFactory.decodeFile(selectedImagePath);
-                    Drawable drawable = new BitmapDrawable(bitmap);
-
-                    ivAvatar.setImageDrawable(drawable);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
                     //path=selectedImagePath;
-                    path = drawable.toString();
+
 
                 }
             }
             Toast.makeText(main, "path:"+path, Toast.LENGTH_SHORT).show();
         }
+    }
+    public static byte[] imageViewToByte(ImageView image) {
+        Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+        return byteArray;
     }
 }
